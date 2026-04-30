@@ -1,14 +1,15 @@
 from typing import TypedDict
 from langgraph.graph import MessagesState
 from langchain_core.messages import AIMessage, SystemMessage
-from langchain.chat_models import init_chat_model
+from langchain_ollama import ChatOllama
 import random
 
-llm = init_chat_model("gemma:2b",
-    model_provider="ollama")
+llm = ChatOllama(model="gemma:2b")
+
 class State(MessagesState):
     customer_name : str
     my_age: int
+    mi_casa: int
 
 
 

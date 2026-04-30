@@ -1,12 +1,12 @@
 from langchain.agents import create_agent
-from langchain_ollama import OllamaLLM
+from langchain_core.tools import tool
+from langchain_ollama import ChatOllama
 
-llm = OllamaLLM(model="gemma:2b")
+llm = ChatOllama(model="gemma:2b")
 
-
-
+@tool
 def get_weather(city: str) -> str:
-    """Get weather for a given city."""
+    """Devuelve el clima para la ciudad dada."""
     return f"It's always sunny in {city}!"
 
 agent = create_agent(
@@ -14,4 +14,3 @@ agent = create_agent(
     tools=[get_weather],
     system_prompt="You are a helpful assistant",
 )
-
